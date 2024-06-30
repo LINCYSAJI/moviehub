@@ -1,0 +1,123 @@
+class Movie(models.Model):
+
+    title=models.CharField(max_length=200)
+
+    year=models.CharField(max_length=200)
+
+    director=models.CharField(max_length=200)
+
+    run_time=models.PositiveIntegerField()
+
+    language=models.CharField(max_length=200)
+
+    genre=models.CharField(max_length=200)
+
+
+
+
+    ******orm query for creating a new movie object******
+
+    from myapp.models import Movie
+
+    >>>Movie.objects.create(title="kgf",year="2018",director="pr",run_time="200",language="tamil",genre="action)
+
+    ******orm query for fetching all movie objects*****
+
+    >>>qs=Movie.objects.all()
+
+    *****for fetching specific movie details***
+
+    >>>qs=modelname.objects.get(condition)
+
+    >>>qs=Movie.objects.get(id=2)
+
+    *****for filtering  movie objet whose genre="comedy"
+
+    >>>qs=Movie.objects.filter(genre="comedy)
+
+    *****for filtering  movie objet whose genre="comedy" and language="malayalam***
+
+     >>>qs=Movie.objects.filter(language="malayalam",genre="comedy")
+
+    ***** filter movie after 2020
+
+    >>>qs=Movie.objects.filter(year __gt=2020)
+
+
+    >   __gt
+    <   __lt
+    >=  __gte
+    <=  __lte
+
+    __exact==>case sensitive
+
+    __iexact==>case insensitive
+
+    filter all movies whose genre=Action 
+
+    >>qs=Movie.objects.filter(genre__iexact="Action")
+
+    __icontaine
+
+    >>qs=Movie.objects.filter(title__icontains="Li")
+
+    filter all movies whose genre "comedy|survival"
+
+    >>qs=Movie.objects.filter(genre__in=["comedy","survival"])
+
+    update orm query
+
+    Movie.objects.filter(id=8).update(director="sankar",run_time=175)
+    
+    delete orm query
+
+    delete movie with id=6
+
+    >>Movie.objects.filter(id=6).delete()
+
+    fetch all languages
+
+    >>qs=Movie.objects.values_list("genre,flat=True)
+
+    fetch all languages
+
+    >>qs= Movie.objects.values_list('language',flat=True).distinct()
+
+    sorting query
+
+    >>qs=Movie.objects.all().order_by("run_time") #ascending
+
+
+    >>qs=Movie.objects.all().order_by("-run_time") #ascending
+
+    >>qs=Movie.objects.all().order_by("-run_time") [0:3] #return first 3 movies 
+
+    >>qs=Movie.objects.all().order_by("-run_time").first()#return first movie
+
+    aggreate orm query
+
+    (Max,Min,Sum,Count,Avg)
+
+    form django.db.models import Max,Min
+
+    qs=Movie.objects.aggregate(Max('run_time'))
+
+    qs=Movie.objects.aggregate(Max('run_time'))
+
+    fetch all movie with longest run_time
+
+    >>qs=Movie.objects.values("run_time").aggreate(longest=Max("run_time"))
+
+    >>qs=Movie.objects.filter(run_time=qs.get('longest'))
+
+    group movies with genre
+
+    >>qs=Movie.objects.values("genre").annotate(summary=Count("genre"))
+
+
+
+    
+
+
+
+

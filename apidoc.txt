@@ -1,0 +1,170 @@
+Schema:Movie
+
+attribute:title,year,director,run_time,language,genre,producer
+
+1)for listing all movies
+
+    url:localhost:8000/api/movies
+
+    Method:GET
+
+    body:nill
+
+    status:pending
+
+2)for creating a movie
+
+    url:localhost:8000/api/movies
+
+    method:POST
+
+    body:{
+        "title":"movie_tile,
+        "year":"year",
+        "director":"movie_director",
+        "run_time":movie_runtime",
+        "language":"movie_language",
+        "genre":"movie_genre",
+        "producer":"movie_producer"
+        }
+
+    status:pending
+    
+
+3)for fetching specific movie detail
+
+    url:localhost:8000/api/movies/{id}/
+
+    method: GET
+
+    body:nill
+
+    status:pending
+
+
+4) for updating a movie
+
+    url:localhost:8000/api/movies/{id}/
+
+    method:PUT
+
+    body:{
+        "title":"movie_tile,
+        "year":"year",
+        "director":"movie_director",
+        "run_time":movie_runtime",
+        "language":"movie_language",
+        "genre":"movie_genre",
+        "producer":"movie_producer"
+
+    }
+
+    status=pending
+
+5)deleting a specific movie
+
+    url:localhost:8000/api/movies/{id}/
+
+    method:DELETE
+
+    body:nill
+
+    status:pending
+
+6) api for listing all languages
+
+    url:localhost:8000:api/movies/languages/
+
+    method:GET
+
+    body:nill
+    
+
+#creatin serializer
+
+>your app>serializers.py
+
+>api>serializers.py
+
+rest_framework>serializers.py>
+
+        1)Serializer
+        2)ModelSerializer
+
+from rest_framework import serializer
+
+
+Schema:actor
+
+attribute:name, age,gender,picture
+
+1)api for listing all actors
+
+    url:localhost:8000/api/actors
+
+    method:GET
+
+    body:nill
+
+
+2)api for creating aa actor
+
+    url:localhost:8000/api/actors/
+
+    method:POST
+
+    body:{
+        "name":"actor_name,
+        "age":"actor_age",
+        "gender":"actor_gender",
+        "picture":actor_picture",
+        }
+
+3)api for fetching a specific actor detail
+
+        url:localhost:8000/api/actors/{id}/
+
+        method:GET
+
+        body:nill
+
+4) for updating an actor
+
+    url:localhost:8000/api/actors/{id}/
+
+    method:PUT
+
+     body:{
+        "name":"actor_name,
+        "age":"actor_age",
+        "gender":"actor_gender",
+        "picture":actor_picture",
+        }
+
+5)deleting a specific actor
+
+    url:localhost:8000/api/actors/{id}/
+
+    method:DELETE
+
+    body:nill
+
+
+
+schema: Review
+
+attributes:{id,comment,rating,user,created_date,album_object}
+
+1)Adding review 
+
+    url:localhost:8000/api/albums/{id}/add_review/
+
+    method=POST
+
+    body:{comment,rating,user}
+
+
+
+
+
+
